@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cannes Lions 2026 — India Tracker</title>
+<style>
+  :root {
+    --gold: #F5B800; --silver: #B0B7C3; --bronze: #C8754A; --shortlist: #5B8FD4;
+    --grandprix: #E63B5E; --bg: #0A0A0F; --card: #13131A; --card2: #1C1C27;
+    --border: #2A2A3A; --text: #E8E8F0; --muted: #7A7A9A; --accent: #FF6B35;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
+  .header { background: linear-gradient(135deg, #0A0A0F 0%, #1A0A1F 50%, #0A0F1A 100%); border-bottom: 1px solid var(--border); padding: 24px 24px 18px; text-align: center; position: relative; overflow: hidden; }
+  .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--grandprix), var(--gold), var(--accent)); }
+  .flag { font-size: 1.8rem; margin-bottom: 4px; }
+  .header h1 { font-size: clamp(1.2rem, 3.5vw, 1.9rem); font-weight: 800; }
+  .header h1 span { color: var(--gold); }
+  .subtitle { color: var(--muted); font-size: 0.78rem; margin-top: 3px; }
+  .live-dot { display: inline-block; width: 7px; height: 7px; background: #44FF88; border-radius: 50%; margin-right: 4px; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)} }
+  .stats-bar { display: flex; gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); overflow-x: auto; }
+  .stat { flex: 1; min-width: 80px; background: var(--card); padding: 12px 8px; text-align: center; }
+  .stat-num { font-size: 1.7rem; font-weight: 800; line-height: 1; }
+  .stat-label { font-size: 0.65rem; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .num-shortlist { color: var(--shortlist); } .num-bronze { color: var(--bronze); }
+  .num-silver { color: var(--silver); } .num-gold { color: var(--gold); } .num-gp { color: var(--grandprix); }
+  .main { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 155px); }
+  @media(max-width: 700px) { .main { grid-template-columns: 1fr; } .sidebar { display: none; } }
+  .sidebar { background: var(--card); border-right: 1px solid var(--border); padding: 14px; overflow-y: auto; }
+  .sidebar h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 10px; }
+  .agency-row { display: flex; align-items: center; gap: 7px; padding: 7px 8px; border-radius: 7px; margin-bottom: 3px; cursor: default; }
+  .agency-row:hover { background: var(--card2); }
+  .rank { font-size: 0.65rem; color: var(--muted); width: 16px; text-align: right; flex-shrink: 0; }
+  .agency-name { font-size: 0.78rem; font-weight: 600; flex: 1; }
+  .agency-pts { font-size: 0.74rem; font-weight: 700; color: var(--gold); }
+  .agency-medals { display: flex; gap: 3px; flex-shrink: 0; }
+  .medal-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .dot-s{background:var(--silver)} .dot-b{background:var(--bronze)} .dot-sl{background:var(--shortlist);opacity:.6}
+  .pts-legend { font-size: 0.62rem; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+  .pts-legend span { color: var(--text); }
+  .content { padding: 14px; overflow-y: auto; }
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; align-items: center; }
+  .filter-label { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .filter-btn { background: var(--card2); border: 1px solid var(--border); color: var(--muted); border-radius: 20px; padding: 3px 10px; font-size: 0.72rem; cursor: pointer; transition: all .15s; }
+  .filter-btn:hover { border-color: var(--gold); color: var(--text); }
+  .filter-btn.active { border-color: currentColor; color: var(--text); }
+  .filter-btn.f-all.active { border-color: var(--text); color: var(--text); background: var(--border); }
+  .filter-btn.f-shortlist.active { border-color: var(--shortlist); color: var(--shortlist); }
+  .filter-btn.f-bronze.active { border-color: var(--bronze); color: var(--bronze); }
+  .filter-btn.f-silver.active { border-color: var(--silver); color: var(--silver); }
+  .filter-btn.f-gold.active { border-color: var(--gold); color: var(--gold); }
+  .filter-btn.f-grandprix.active { border-color: var(--grandprix); color: var(--grandprix); }
+  .cat-section { margin-bottom: 18px; }
+  .cat-header { display: flex; align-items: center; gap: 7px; padding: 7px 12px; background: var(--card2); border-radius: 8px 8px 0 0; border: 1px solid var(--border); border-bottom: none; }
+  .cat-icon { font-size: 0.95rem; }
+  .cat-title { font-size: 0.82rem; font-weight: 700; }
+  .cat-count { font-size: 0.65rem; color: var(--muted); margin-left: auto; background: var(--border); padding: 2px 7px; border-radius: 10px; }
+  .entries-table { width: 100%; border: 1px solid var(--border); border-radius: 0 0 8px 8px; overflow: hidden; }
+  .table-head { display: grid; grid-template-columns: 88px 1fr 1fr 80px; background: rgba(255,255,255,.03); border-bottom: 1px solid var(--border); }
+  .table-head > div { padding: 5px 10px; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); font-weight: 600; }
+  .entry-row { display: grid; grid-template-columns: 88px 1fr 1fr 80px; align-items: start; border-bottom: 1px solid var(--border); transition: background .1s; }
+  .entry-row:last-child { border-bottom: none; }
+  .entry-row:hover { background: var(--card2); }
+  .entry-row > div { padding: 9px 10px; }
+  .entry-status { display: flex; align-items: flex-start; justify-content: center; padding-top: 10px; }
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 20px; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase; white-space: nowrap; }
+  .badge-shortlist{background:rgba(91,143,212,.15);color:var(--shortlist);border:1px solid rgba(91,143,212,.3)}
+  .badge-bronze{background:rgba(200,117,74,.15);color:var(--bronze);border:1px solid rgba(200,117,74,.3)}
+  .badge-silver{background:rgba(176,183,195,.15);color:var(--silver);border:1px solid rgba(176,183,195,.3)}
+  .badge-gold{background:rgba(245,184,0,.15);color:var(--gold);border:1px solid rgba(245,184,0,.3)}
+  .badge-grandprix{background:rgba(230,59,94,.15);color:var(--grandprix);border:1px solid rgba(230,59,94,.3)}
+  .entry-campaign { font-weight: 700; font-size: 0.82rem; line-height: 1.3; }
+  .entry-brand { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+  .entry-agency-name { font-weight: 600; font-size: 0.76rem; }
+  .entry-sub { font-size: 0.64rem; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+  .entry-links { display: flex; flex-direction: column; gap: 4px; padding-top: 9px; }
+  .work-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.68rem; font-weight: 600; color: var(--accent); text-decoration: none; padding: 3px 7px; border: 1px solid rgba(255,107,53,.3); border-radius: 12px; transition: all .15s; white-space: nowrap; }
+  .work-link:hover { background: rgba(255,107,53,.12); border-color: var(--accent); }
+  .work-link.yt { color: #FF4444; border-color: rgba(255,68,68,.35); }
+  .work-link.yt:hover { background: rgba(255,68,68,.12); border-color: #FF4444; }
+  .work-link.web { color: #5B8FD4; border-color: rgba(91,143,212,.35); }
+  .work-link.web:hover { background: rgba(91,143,212,.12); border-color: var(--shortlist); }
+  .no-link { font-size: 0.64rem; color: var(--muted); opacity: 0.5; padding-top: 10px; }
+  .no-entries { padding: 20px; text-align: center; color: var(--muted); font-size: 0.8rem; }
+  .updates { margin-top: 18px; }
+  .updates h2 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px; }
+  .update-item { display: flex; gap: 9px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .update-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-top: 5px; flex-shrink: 0; }
+  .update-text { font-size: 0.77rem; color: var(--text); line-height: 1.5; }
+  .update-time { font-size: 0.64rem; color: var(--muted); margin-top: 2px; }
+  footer { text-align: center; padding: 14px; font-size: 0.64rem; color: var(--muted); border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="flag">🇮🇳</div>
+  <h1>Cannes Lions 2026 — <span>India</span> Tracker</h1>
+  <div class="subtitle"><span class="live-dot"></span>Live · Festival Week June 22–26 · 73rd Edition</div>
+</div>
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num num-shortlist">18</div><div class="stat-label">Shortlists</div></div>
+  <div class="stat"><div class="stat-num num-bronze">2</div><div class="stat-label">Bronze</div></div>
+  <div class="stat"><div class="stat-num num-silver">2</div><div class="stat-label">Silver</div></div>
+  <div class="stat"><div class="stat-num num-gold">0</div><div class="stat-label">Gold</div></div>
+  <div class="stat"><div class="stat-num num-gp">0</div><div class="stat-label">Grand Prix</div></div>
+</div>
+<div class="main">
+  <div class="sidebar">
+    <h2>🏆 Agency Leaderboard</h2>
+    <div id="leaderboard"></div>
+    <div class="pts-legend">Points: <span>GP 10 · Gold 7 · Silver 5 · Bronze 3 · SL 1</span></div>
+  </div>
+  <div class="content">
+    <div class="filter-bar">
+      <span class="filter-label">Filter:</span>
+      <div class="filter-group">
+        <button class="filter-btn f-all active" data-filter="all">All</button>
+        <button class="filter-btn f-shortlist" data-filter="Shortlist">Shortlist</button>
+        <button class="filter-btn f-bronze" data-filter="Bronze">Bronze</button>
+        <button class="filter-btn f-silver" data-filter="Silver">Silver</button>
+        <button class="filter-btn f-gold" data-filter="Gold">Gold</button>
+        <button class="filter-btn f-grandprix" data-filter="Grand Prix">Grand Prix</button>
+      </div>
+    </div>
+    <div id="entries-container"></div>
+    <div class="updates">
+      <h2>📡 Latest Updates</h2>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India wins 2 Silver + 2 Bronze on Day 1 (June 22) across Audio & Radio, Health & Wellness and Pharma.</div><div class="update-time">Day 1 · June 22, 2026</div></div></div>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">KitKat "Slooowest Vending Machine" (VML) earns India's 18th shortlist in Brand Experience & Activation.</div><div class="update-time">June 22, 2026</div></div></div>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India adds 9 shortlists across Film Craft, Design, Direct and Media. Ogilvy & VML India lead with 2 each.</div><div class="update-time">June 21, 2026</div></div></div>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India opens Cannes account with 8 shortlists across 7 categories. Health & Wellness leads with 4.</div><div class="update-time">June 20, 2026</div></div></div>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India sent 676 entries this year — down 31.2% from 982 in 2025.</div><div class="update-time">Pre-Festival</div></div></div>
+    </div>
+  </div>
+</div>
+<footer>🦁 Tracking Indian creativity at Cannes Lions 2026 · Data: Exchange4Media, BestMediaInfo, Storyboard18, Afaqs, LBBOnline</footer>
+
+<script>
+const entries = [
+  // Audio & Radio
+  {
+    cat:"Audio & Radio", campaign:"The Unofficial Sound of F1", brand:"Sting (PepsiCo)", agency:"Leo India", sub:"Challenger Brand", status:"Silver", day:"Day 1",
+    links:[
+      {label:"▶ Case Study", url:"https://www.youtube.com/watch?v=MteFVMaD-0M", type:"yt"},
+    ]
+  },
+  // Creative Brand
+  {
+    cat:"Creative Brand", campaign:"From a Sanitary Pad to a Basic Right", brand:"Whisper (P&G)", agency:"Leo India / P&G", sub:"Brand Positioning", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.adgully.com/post/17198/cannes-lions-2026-india-secures-8-shortlists-in-opening-round-health-wellness-leads", type:"web"},
+    ]
+  },
+  // Health & Wellness
+  {
+    cat:"Health & Wellness", campaign:"Indianis Dentris", brand:"Colgate", agency:"The Refinery Mumbai / Brand David", sub:"Education & Awareness – Photography", status:"Silver", day:"Day 1",
+    links:[
+      {label:"▶ Campaign Film", url:"https://www.youtube.com/watch?v=TAKV25W13ww", type:"yt"},
+      {label:"▶ Making Of", url:"https://www.youtube.com/watch?v=oXqkxGpXcWg", type:"yt"},
+      {label:"🌐 Ads of the World", url:"https://www.adsoftheworld.com/campaigns/indianis-dentris-india-s-newest-flower-species-8d1490a7-0043-416f-87ae-8c169f071a8f", type:"web"},
+    ]
+  },
+  {
+    cat:"Health & Wellness", campaign:"Renu vs The City", brand:"St. Jude India ChildCare Centres", agency:"Ogilvy Mumbai", sub:"Non-profit Health Education", status:"Bronze", day:"Day 1",
+    links:[
+      {label:"🌐 Directors' Library", url:"https://directorslibrary.com/2025/latest/campaigns/renu-vs-the-city-st-jude-india", type:"web"},
+      {label:"🌐 Campaign Info", url:"https://www.adgully.com/post/3460/ogilvy-mumbai-teams-up-with-st-jude-india-for-heartfelt-renu-vs-the-city-cancer-awareness-campaign", type:"web"},
+    ]
+  },
+  {
+    cat:"Health & Wellness", campaign:"Project Golden Minute", brand:"Johnson's Baby (J&J)", agency:"McCann India", sub:"Direct – Brand Led – Education", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://bestmediainfo.com/mediainfo/advertising/cannes-lions-2026-day-1-india-wins-2-silver-and-2-bronze-12062893", type:"web"},
+    ]
+  },
+  {
+    cat:"Health & Wellness", campaign:"Ek Tara Project", brand:"Titan Eye+", agency:"Ogilvy Bengaluru", sub:"Brand Experience – Health Services", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.exchange4media.com/cannes-lions-news/cannes-lions-2026-india-scores-8-shortlists-across-7-categories-155620.html", type:"web"},
+    ]
+  },
+  // Pharma
+  {
+    cat:"Pharma", campaign:"Sawaal Uthao", brand:"Tata 1mg", agency:"Humour Me", sub:"Disease Awareness & Understanding", status:"Bronze", day:"Day 1",
+    links:[
+      {label:"▶ Campaign Film", url:"https://www.youtube.com/watch?v=zeeHd1OzrZo", type:"yt"},
+      {label:"▶ Film 2", url:"https://www.youtube.com/watch?v=QNI7bY7BbhA", type:"yt"},
+      {label:"🌐 Campaign Hub", url:"https://www.1mg.com/trust/sawaaluthao", type:"web"},
+    ]
+  },
+  // Print & Publishing
+  {
+    cat:"Print & Publishing", campaign:"The Kolhapuri", brand:"Kalapuri", agency:"VML India", sub:"Publications for Good", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.medianews4u.com/india-at-cannes-lions-2026-17-shortlists-and-counting-as-ogilvy-vml-lead-the-charge/", type:"web"},
+    ]
+  },
+  // Film Craft
+  {
+    cat:"Film Craft", campaign:"Don't Look Up", brand:"Steadfast", agency:"TBWA\\Lintas Mumbai", sub:"Script", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"▶ Campaign Film", url:"https://www.youtube.com/watch?v=7G3S7SbpJ20", type:"yt"},
+    ]
+  },
+  {
+    cat:"Film Craft", campaign:"Renu Vs The City", brand:"St. Jude India ChildCare Centres", agency:"Ogilvy Mumbai", sub:"Casting", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Directors' Library", url:"https://directorslibrary.com/2025/latest/campaigns/renu-vs-the-city-st-jude-india", type:"web"},
+      {label:"🌐 Lürzer's Archive", url:"https://www.luerzersarchive.com/work/st-jude-india-child-care-centres/", type:"web"},
+    ]
+  },
+  {
+    cat:"Film Craft", campaign:"Jeere Mein Heera", brand:"Rimzim Jeera (Coca-Cola)", agency:"ZigZag Films / TALENTED.AGENCY", sub:"Use of Licensed/Adapted Music", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"▶ Brand Film", url:"https://www.youtube.com/watch?v=VBFV5D6J2_k", type:"yt"},
+    ]
+  },
+  // Design
+  {
+    cat:"Design", campaign:"The Art of Survival", brand:"Godawan (Radico Khaitan)", agency:"22Feet Mumbai / Butterfly Cannon London", sub:"Packaging Design", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.bwmarketingworld.com/article/india-adds-nine-more-shortlists-at-cannes-lions-2026-total-tally-reaches-17-611589", type:"web"},
+    ]
+  },
+  {
+    cat:"Design", campaign:"The Slooowest Vending Machine in the World", brand:"KitKat (Nestlé)", agency:"VML Gurgaon / VML Amsterdam", sub:"Brand Environment & Experience Design", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.bwmarketingworld.com/article/india-secures-one-shortlist-in-brand-experience-activation-at-cannes-lions-2026-611632", type:"web"},
+    ]
+  },
+  // Direct
+  {
+    cat:"Direct", campaign:"Blinkstop", brand:"Blinkstop", agency:"82.5 Mumbai / Grey India", sub:"Experience Design", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.medianews4u.com/india-at-cannes-lions-2026-17-shortlists-and-counting-as-ogilvy-vml-lead-the-charge/", type:"web"},
+    ]
+  },
+  {
+    cat:"Direct", campaign:"The Kolhapuri", brand:"Kalapuri", agency:"VML India", sub:"Cultural Engagement", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.medianews4u.com/india-at-cannes-lions-2026-17-shortlists-and-counting-as-ogilvy-vml-lead-the-charge/", type:"web"},
+    ]
+  },
+  // Media
+  {
+    cat:"Media", campaign:"Vim Ka Mahakadhai Record", brand:"Vim (HUL)", agency:"Mindshare India (WPP Media)", sub:"Single Market Campaign", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.storyboard18.com/advertising/cannes-lions-2026-india-adds-nine-more-shortlists-tally-reaches-17-101875.htm", type:"web"},
+    ]
+  },
+  {
+    cat:"Media", campaign:"Box to Beds", brand:"Amazon India", agency:"Ogilvy Mumbai", sub:"Social Behaviour", status:"Shortlist", day:"Pre-Festival",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.storyboard18.com/advertising/cannes-lions-2026-india-adds-nine-more-shortlists-tally-reaches-17-101875.htm", type:"web"},
+    ]
+  },
+  // Brand Experience & Activation
+  {
+    cat:"Brand Experience & Activation", campaign:"The Slooowest Vending Machine in the World", brand:"KitKat (Nestlé)", agency:"VML Gurgaon / VML Amsterdam", sub:"Customer Acquisition & Retention", status:"Shortlist", day:"June 22",
+    links:[
+      {label:"🌐 Campaign Info", url:"https://www.bwmarketingworld.com/article/india-secures-one-shortlist-in-brand-experience-activation-at-cannes-lions-2026-611632", type:"web"},
+    ]
+  },
+];
+
+const catIcons = {
+  "Audio & Radio":"🎵","Creative Brand":"⭐","Health & Wellness":"💚","Pharma":"💊",
+  "Print & Publishing":"📰","Film Craft":"🎬","Design":"🎨","Direct":"🎯",
+  "Media":"📡","Brand Experience & Activation":"✨"
+};
+
+const statusOrder = {"Grand Prix":0,"Gold":1,"Silver":2,"Bronze":3,"Shortlist":4};
+const agencyPoints = {"Grand Prix":10,"Gold":7,"Silver":5,"Bronze":3,"Shortlist":1};
+
+function buildLeaderboard(data) {
+  const map = {};
+  data.forEach(e => {
+    const a = e.agency.split('/')[0].trim().split('\\')[0].trim();
+    if (!map[a]) map[a] = {pts:0, medals:[]};
+    map[a].pts += agencyPoints[e.status] || 0;
+    map[a].medals.push(e.status);
+  });
+  return Object.entries(map).sort((a,b)=>b[1].pts-a[1].pts);
+}
+
+function dotCls(s) {
+  if(s==='Silver') return 'dot-s';
+  if(s==='Bronze') return 'dot-b';
+  return 'dot-sl';
+}
+
+function renderLeaderboard(data) {
+  const board = buildLeaderboard(data);
+  document.getElementById('leaderboard').innerHTML = board.slice(0,12).map(([name,d],i)=>`
+    <div class="agency-row">
+      <div class="rank">${i+1}</div>
+      <div class="agency-name">${name}</div>
+      <div class="agency-medals">${d.medals.slice(0,5).map(m=>`<div class="medal-dot ${dotCls(m)}"></div>`).join('')}</div>
+      <div class="agency-pts">${d.pts}pt</div>
+    </div>`).join('');
+}
+
+function badgeHtml(s) {
+  const cls = `badge-${s.toLowerCase().replace(' ','')}`;
+  const icons = {Shortlist:'◈',Bronze:'🥉',Silver:'🥈',Gold:'🥇','Grand Prix':'🏆'};
+  return `<span class="badge ${cls}">${icons[s]||''} ${s}</span>`;
+}
+
+function linksHtml(links) {
+  if (!links || !links.length) return `<div class="no-link">—</div>`;
+  return `<div class="entry-links">${links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener" class="work-link ${l.type}">${l.label}</a>`).join('')}</div>`;
+}
+
+function renderEntries(filter) {
+  const cats = [...new Set(entries.map(e=>e.cat))];
+  const container = document.getElementById('entries-container');
+  container.innerHTML = '';
+  cats.forEach(cat => {
+    const catEntries = entries
+      .filter(e=>e.cat===cat)
+      .filter(e=>filter==='all'||e.status===filter)
+      .sort((a,b)=>statusOrder[a.status]-statusOrder[b.status]);
+    if(!catEntries.length) return;
+    const sec = document.createElement('div');
+    sec.className = 'cat-section';
+    sec.innerHTML = `
+      <div class="cat-header">
+        <span class="cat-icon">${catIcons[cat]||'🦁'}</span>
+        <span class="cat-title">${cat}</span>
+        <span class="cat-count">${catEntries.length} entr${catEntries.length===1?'y':'ies'}</span>
+      </div>
+      <div class="entries-table">
+        <div class="table-head">
+          <div>Status</div><div>Campaign · Brand</div><div>Agency · Subcategory</div><div>Watch Work</div>
+        </div>
+        ${catEntries.map(e=>`
+        <div class="entry-row">
+          <div class="entry-status">${badgeHtml(e.status)}</div>
+          <div>
+            <div class="entry-campaign">${e.campaign}</div>
+            <div class="entry-brand">${e.brand}</div>
+          </div>
+          <div>
+            <div class="entry-agency-name">${e.agency}</div>
+            <div class="entry-sub">${e.sub}</div>
+          </div>
+          <div>${linksHtml(e.links)}</div>
+        </div>`).join('')}
+      </div>`;
+    container.appendChild(sec);
+  });
+  if(!container.children.length) container.innerHTML=`<div class="no-entries">No entries found.</div>`;
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderEntries(btn.dataset.filter);
+  });
+});
+
+renderLeaderboard(entries);
+renderEntries('all');
+</script>
+</body>
+</html>
