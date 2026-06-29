@@ -6,152 +6,172 @@
 <title>Cannes Lions 2026 — India Tracker</title>
 <style>
   :root {
-    --gold: #D4920A; --silver: #7A8499; --bronze: #B05E2F; --shortlist: #2E6FD8;
-    --grandprix: #C4183C; --bg: #F2F4F8; --card: #FFFFFF; --card2: #EEF0F5;
-    --border: #DDE0EA; --text: #1A1A2E; --muted: #6B7280; --accent: #E05A1A;
-    --header-bg: #1A1A2E;
+    --gold:#D4920A;--silver:#7A8499;--bronze:#B05E2F;--shortlist:#2E6FD8;
+    --grandprix:#C4183C;--bg:#F2F4F8;--card:#FFFFFF;--card2:#EEF0F5;
+    --border:#DDE0EA;--text:#1A1A2E;--muted:#6B7280;--accent:#E05A1A;
+    --header-bg:#1A1A2E;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; font-size: 15px; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:15px}
 
-  /* Header */
-  .header { background: var(--header-bg); border-bottom: 4px solid var(--gold); padding: 32px 28px 24px; text-align: center; position: relative; overflow: hidden; }
-  .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--grandprix), var(--gold), var(--accent), #F5B800); }
-  .flag { font-size: 2.4rem; margin-bottom: 8px; }
-  .header h1 { font-size: clamp(1.5rem, 4vw, 2.3rem); font-weight: 800; letter-spacing: -0.5px; color: #fff; }
-  .header h1 span { color: #F5B800; }
-  .subtitle { color: #A0A8C0; font-size: 0.9rem; margin-top: 6px; }
-  .live-dot { display: inline-block; width: 8px; height: 8px; background: #44FF88; border-radius: 50%; margin-right: 6px; animation: pulse 1.5s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)} }
+  /* ── HEADER ── */
+  .header{background:var(--header-bg);border-bottom:4px solid var(--gold);padding:28px 24px 20px;text-align:center;position:relative;overflow:hidden}
+  .header::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--grandprix),var(--gold),var(--accent),#F5B800)}
+  .flag{font-size:2.2rem;margin-bottom:6px}
+  .header h1{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:800;color:#fff}
+  .header h1 span{color:#F5B800}
+  .subtitle{color:#A0A8C0;font-size:.88rem;margin-top:5px}
+  .concluded-badge{display:inline-block;background:rgba(245,184,0,.15);color:#F5B800;border:1px solid rgba(245,184,0,.4);border-radius:20px;font-size:.72rem;font-weight:700;padding:3px 12px;margin-top:8px;letter-spacing:.5px}
 
-  /* Stats Bar */
-  .stats-bar { display: flex; background: var(--card); border-bottom: 2px solid var(--border); overflow-x: auto; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
-  .stat { flex: 1; min-width: 90px; background: var(--card); padding: 18px 12px; text-align: center; border-right: 1px solid var(--border); }
-  .stat:last-child { border-right: none; }
-  .stat:hover { background: var(--bg); }
-  .stat-num { font-size: 2.2rem; font-weight: 800; line-height: 1; }
-  .stat-label { font-size: 0.72rem; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
-  .num-shortlist{color:var(--shortlist)} .num-bronze{color:var(--bronze)}
-  .num-silver{color:var(--silver)} .num-gold{color:var(--gold)} .num-gp{color:var(--grandprix)}
+  /* ── STATS ── */
+  .stats-bar{display:flex;background:var(--card);border-bottom:2px solid var(--border);overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .stat{flex:1;min-width:80px;background:var(--card);padding:16px 10px;text-align:center;border-right:1px solid var(--border)}
+  .stat:last-child{border-right:none}
+  .stat:hover{background:var(--bg)}
+  .stat-num{font-size:2rem;font-weight:800;line-height:1}
+  .stat-label{font-size:.68rem;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.8px;font-weight:600}
+  .num-shortlist{color:var(--shortlist)}.num-bronze{color:var(--bronze)}.num-silver{color:var(--silver)}.num-gold{color:var(--gold)}.num-gp{color:var(--grandprix)}
 
-  /* Main layout */
-  .main { display: grid; grid-template-columns: 280px 1fr; min-height: calc(100vh - 180px); }
-  @media(max-width: 760px) { .main { grid-template-columns: 1fr; } .sidebar { display: none; } }
+  /* ── LAYOUT ── */
+  .main{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 160px)}
+  @media(max-width:760px){.main{grid-template-columns:1fr}.sidebar{display:none}}
 
-  /* Sidebar */
-  .sidebar { background: var(--card); border-right: 1px solid var(--border); padding: 20px; overflow-y: auto; }
-  .sidebar-section-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 12px; font-weight: 700; }
-  .agency-row { display: flex; align-items: center; gap: 9px; padding: 8px 10px; border-radius: 9px; margin-bottom: 3px; cursor: default; transition: background .15s; }
-  .agency-row:hover { background: var(--bg); }
-  .rank { font-size: 0.72rem; color: var(--muted); width: 20px; text-align: right; flex-shrink: 0; font-weight: 600; }
-  .agency-name { font-size: 0.86rem; font-weight: 600; flex: 1; }
-  .agency-pts { font-size: 0.8rem; font-weight: 800; color: var(--gold); }
-  .agency-medals { display: flex; gap: 3px; flex-shrink: 0; }
-  .medal-dot { width: 9px; height: 9px; border-radius: 50%; }
-  .dot-s{background:var(--silver)} .dot-b{background:var(--bronze)} .dot-sl{background:var(--shortlist);opacity:.45}
-  .pts-legend { font-size: 0.67rem; color: var(--muted); margin-top: 14px; line-height: 1.8; border-top: 1px solid var(--border); padding-top: 12px; }
-  .pts-legend span { color: var(--text); font-weight: 600; }
+  /* ── SIDEBAR ── */
+  .sidebar{background:var(--card);border-right:1px solid var(--border);padding:18px;overflow-y:auto}
+  .sidebar-section-title{font-size:.72rem;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);margin-bottom:10px;font-weight:700}
+  .agency-row{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;margin-bottom:3px;cursor:default;transition:background .15s}
+  .agency-row:hover{background:var(--bg)}
+  .rank{font-size:.68rem;color:var(--muted);width:18px;text-align:right;flex-shrink:0;font-weight:600}
+  .agency-name{font-size:.82rem;font-weight:600;flex:1}
+  .agency-pts{font-size:.76rem;font-weight:800;color:var(--gold)}
+  .agency-medals{display:flex;gap:3px;flex-shrink:0}
+  .medal-dot{width:8px;height:8px;border-radius:50%}
+  .dot-s{background:var(--silver)}.dot-b{background:var(--bronze)}.dot-sl{background:var(--shortlist);opacity:.45}
+  .pts-legend{font-size:.63rem;color:var(--muted);margin-top:12px;line-height:1.8;border-top:1px solid var(--border);padding-top:10px}
+  .pts-legend span{color:var(--text);font-weight:600}
+  .sidebar-divider{margin:16px 0;border:none;border-top:1px solid var(--border)}
 
-  /* Content */
-  .content { padding: 20px; overflow-y: auto; background: var(--bg); }
+  /* ── CONTENT ── */
+  .content{padding:18px;overflow-y:auto;background:var(--bg)}
 
-  /* ── WINNERS + SHORTLISTS SUMMARY TABLE ── */
-  .summary-block { background: var(--card); border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.07); overflow: hidden; margin-bottom: 28px; }
-  .summary-block-header { display: flex; align-items: center; gap: 10px; padding: 13px 18px; background: var(--header-bg); }
-  .summary-block-header h2 { font-size: 0.88rem; font-weight: 700; color: #fff; }
-  .summary-tabs { display: flex; border-bottom: 2px solid var(--border); }
-  .stab { flex: 1; padding: 10px; text-align: center; font-size: 0.78rem; font-weight: 700; cursor: pointer; color: var(--muted); border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .15s; }
-  .stab.active { color: var(--shortlist); border-bottom-color: var(--shortlist); }
-  .stab.winners-tab.active { color: var(--bronze); border-bottom-color: var(--bronze); }
-  .summary-panel { display: none; }
-  .summary-panel.active { display: block; }
-  .sum-table { width: 100%; border-collapse: collapse; }
-  .sum-table th { padding: 8px 14px; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); font-weight: 700; background: var(--card2); text-align: left; border-bottom: 1px solid var(--border); }
-  .sum-table td { padding: 10px 14px; font-size: 0.84rem; border-bottom: 1px solid var(--border); vertical-align: top; }
-  .sum-table tr:last-child td { border-bottom: none; }
-  .sum-table tr:hover td { background: #F8F9FC; }
-  .sum-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 20px; font-size: 0.68rem; font-weight: 700; white-space: nowrap; }
+  /* ── GLOBAL LEADERBOARD ── */
+  .global-board{background:var(--card);border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;margin-bottom:24px}
+  .dark-header{display:flex;align-items:center;gap:10px;padding:13px 18px;background:var(--header-bg)}
+  .dark-header h2{font-size:.88rem;font-weight:700;color:#fff}
+  .dark-header .badge-new{font-size:.62rem;background:rgba(245,184,0,.2);color:#F5B800;border:1px solid rgba(245,184,0,.4);border-radius:10px;padding:2px 7px;font-weight:700;letter-spacing:.3px}
+  .global-tabs{display:flex;border-bottom:2px solid var(--border)}
+  .gtab{flex:1;padding:9px;text-align:center;font-size:.76rem;font-weight:700;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s}
+  .gtab.active{color:var(--shortlist);border-bottom-color:var(--shortlist)}
+  .gpanel{display:none}
+  .gpanel.active{display:block}
+  .gl-table{width:100%;border-collapse:collapse}
+  .gl-table th{padding:7px 14px;font-size:.65rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:700;background:var(--card2);text-align:left;border-bottom:1px solid var(--border)}
+  .gl-table td{padding:9px 14px;font-size:.83rem;border-bottom:1px solid var(--border);vertical-align:middle}
+  .gl-table tr:last-child td{border-bottom:none}
+  .gl-table tr:hover td{background:#F8F9FC}
+  .gl-table tr.india-row td{background:#FFF8E7;font-weight:600}
+  .gl-rank{font-size:.75rem;color:var(--muted);font-weight:700;text-align:center}
+  .gl-flag{font-size:1.1rem;text-align:center}
+  .gl-total{font-weight:800;font-size:.9rem}
+  .mini-bar{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+  .mini-pill{font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:10px;white-space:nowrap}
+  .pill-gp{background:#FDECEF;color:var(--grandprix);border:1px solid #F4AABB}
+  .pill-g{background:#FEF9E7;color:var(--gold);border:1px solid #F5DC8A}
+  .pill-s{background:#F4F5F7;color:var(--silver);border:1px solid #CDD1DB}
+  .pill-b{background:#FDF2EC;color:var(--bronze);border:1px solid #F0C9B0}
+  .note-bar{padding:9px 16px;background:var(--card2);font-size:.72rem;color:var(--muted);border-top:1px solid var(--border)}
+
+  /* ── SUMMARY TABLE ── */
+  .summary-block{background:var(--card);border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.07);overflow:hidden;margin-bottom:24px}
+  .summary-tabs{display:flex;border-bottom:2px solid var(--border)}
+  .stab{flex:1;padding:9px;text-align:center;font-size:.76rem;font-weight:700;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s}
+  .stab.active{color:var(--shortlist);border-bottom-color:var(--shortlist)}
+  .stab.winners-tab.active{color:var(--bronze);border-bottom-color:var(--bronze)}
+  .summary-panel{display:none}
+  .summary-panel.active{display:block}
+  .sum-table{width:100%;border-collapse:collapse}
+  .sum-table th{padding:7px 14px;font-size:.65rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:700;background:var(--card2);text-align:left;border-bottom:1px solid var(--border)}
+  .sum-table td{padding:9px 14px;font-size:.83rem;border-bottom:1px solid var(--border);vertical-align:top}
+  .sum-table tr:last-child td{border-bottom:none}
+  .sum-table tr:hover td{background:#F8F9FC}
+  .sum-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:.67rem;font-weight:700;white-space:nowrap}
   .sb-silver{background:#F4F5F7;color:var(--silver);border:1.5px solid #CDD1DB}
   .sb-bronze{background:#FDF2EC;color:var(--bronze);border:1.5px solid #F0C9B0}
   .sb-gold{background:#FEF9E7;color:var(--gold);border:1.5px solid #F5DC8A}
   .sb-gp{background:#FDECEF;color:var(--grandprix);border:1.5px solid #F4AABB}
   .sb-sl{background:#EEF4FF;color:var(--shortlist);border:1.5px solid #C3D8F8}
-  .sum-cat { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
-  .sum-agency { font-size: 0.82rem; font-weight: 600; }
-  .sum-pts { font-size: 0.85rem; font-weight: 800; color: var(--gold); }
+  .sum-cat{font-size:.7rem;color:var(--muted);margin-top:2px}
+  .sum-agency{font-size:.8rem;font-weight:600}
+  .jp-chip{display:inline-block;font-size:.63rem;color:var(--muted);background:var(--card2);border:1px solid var(--border);border-radius:8px;padding:1px 7px;margin-top:3px;font-style:italic}
 
-  /* Filter */
-  .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; align-items: center; }
-  .filter-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600; }
-  .filter-group { display: flex; gap: 6px; flex-wrap: wrap; }
-  .filter-btn { background: var(--card); border: 1.5px solid var(--border); color: var(--muted); border-radius: 20px; padding: 5px 14px; font-size: 0.78rem; cursor: pointer; transition: all .15s; font-weight: 500; }
-  .filter-btn:hover { border-color: var(--shortlist); color: var(--text); }
-  .filter-btn.active { color: #fff; }
-  .filter-btn.f-all.active { background: var(--text); border-color: var(--text); }
-  .filter-btn.f-shortlist.active { background: var(--shortlist); border-color: var(--shortlist); }
-  .filter-btn.f-bronze.active { background: var(--bronze); border-color: var(--bronze); }
-  .filter-btn.f-silver.active { background: var(--silver); border-color: var(--silver); }
-  .filter-btn.f-gold.active { background: var(--gold); border-color: var(--gold); }
-  .filter-btn.f-grandprix.active { background: var(--grandprix); border-color: var(--grandprix); }
+  /* ── FILTERS ── */
+  .filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;align-items:center}
+  .filter-label{font-size:.73rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;font-weight:600}
+  .filter-group{display:flex;gap:5px;flex-wrap:wrap}
+  .filter-btn{background:var(--card);border:1.5px solid var(--border);color:var(--muted);border-radius:20px;padding:5px 13px;font-size:.76rem;cursor:pointer;transition:all .15s;font-weight:500}
+  .filter-btn:hover{border-color:var(--shortlist);color:var(--text)}
+  .filter-btn.active{color:#fff}
+  .filter-btn.f-all.active{background:var(--text);border-color:var(--text)}
+  .filter-btn.f-shortlist.active{background:var(--shortlist);border-color:var(--shortlist)}
+  .filter-btn.f-bronze.active{background:var(--bronze);border-color:var(--bronze)}
+  .filter-btn.f-silver.active{background:var(--silver);border-color:var(--silver)}
+  .filter-btn.f-gold.active{background:var(--gold);border-color:var(--gold)}
+  .filter-btn.f-grandprix.active{background:var(--grandprix);border-color:var(--grandprix)}
 
-  /* Category sections */
-  .cat-section { margin-bottom: 24px; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
-  .cat-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--header-bg); }
-  .cat-icon { font-size: 1.1rem; }
-  .cat-title { font-size: 0.92rem; font-weight: 700; color: #fff; }
-  .cat-count { font-size: 0.72rem; color: #A0A8C0; margin-left: auto; background: rgba(255,255,255,.12); padding: 3px 10px; border-radius: 10px; font-weight: 600; }
-
-  .entries-table { width: 100%; background: var(--card); }
-  .table-head { display: grid; grid-template-columns: 100px 1fr 1fr 90px; background: var(--card2); border-bottom: 2px solid var(--border); }
-  .table-head > div { padding: 8px 14px; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); font-weight: 700; }
-  .entry-row { display: grid; grid-template-columns: 100px 1fr 1fr 90px; align-items: start; border-bottom: 1px solid var(--border); transition: background .1s; }
-  .entry-row:last-child { border-bottom: none; }
-  .entry-row:hover { background: #F8F9FC; }
-  .entry-row > div { padding: 12px 14px; }
-  .entry-status { display: flex; align-items: flex-start; justify-content: center; padding-top: 13px; }
-  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.3px; text-transform: uppercase; white-space: nowrap; }
+  /* ── CAT SECTIONS ── */
+  .cat-section{margin-bottom:22px;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+  .cat-header{display:flex;align-items:center;gap:10px;padding:11px 16px;background:var(--header-bg)}
+  .cat-icon{font-size:1rem}
+  .cat-title{font-size:.9rem;font-weight:700;color:#fff}
+  .cat-jp{font-size:.68rem;color:#A0A8C0;margin-left:4px}
+  .cat-count{font-size:.7rem;color:#A0A8C0;margin-left:auto;background:rgba(255,255,255,.12);padding:2px 9px;border-radius:10px;font-weight:600}
+  .entries-table{width:100%;background:var(--card)}
+  .table-head{display:grid;grid-template-columns:100px 1fr 1fr 90px;background:var(--card2);border-bottom:2px solid var(--border)}
+  .table-head>div{padding:7px 13px;font-size:.64rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:700}
+  .entry-row{display:grid;grid-template-columns:100px 1fr 1fr 90px;align-items:start;border-bottom:1px solid var(--border);transition:background .1s}
+  .entry-row:last-child{border-bottom:none}
+  .entry-row:hover{background:#F8F9FC}
+  .entry-row>div{padding:11px 13px}
+  .entry-status{display:flex;align-items:flex-start;justify-content:center;padding-top:12px}
+  .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:.69rem;font-weight:700;text-transform:uppercase;white-space:nowrap}
   .badge-shortlist{background:#EEF4FF;color:var(--shortlist);border:1.5px solid #C3D8F8}
   .badge-bronze{background:#FDF2EC;color:var(--bronze);border:1.5px solid #F0C9B0}
   .badge-silver{background:#F4F5F7;color:var(--silver);border:1.5px solid #CDD1DB}
   .badge-gold{background:#FEF9E7;color:var(--gold);border:1.5px solid #F5DC8A}
   .badge-grandprix{background:#FDECEF;color:var(--grandprix);border:1.5px solid #F4AABB}
-  .entry-campaign { font-weight: 700; font-size: 0.88rem; line-height: 1.3; }
-  .entry-brand { font-size: 0.75rem; color: var(--muted); margin-top: 3px; }
-  .entry-agency-name { font-weight: 600; font-size: 0.84rem; }
-  .entry-sub { font-size: 0.71rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
-  .entry-day { font-size: 0.73rem; color: var(--muted); padding-top: 13px; font-weight: 500; }
-  .view-work-btn { display: inline-flex; align-items: center; gap: 5px; margin-top: 9px; padding: 5px 12px; font-size: 0.72rem; font-weight: 700; color: var(--accent); background: #FEF3ED; border: 1.5px solid #F5C5A8; border-radius: 20px; text-decoration: none; transition: all .15s; white-space: nowrap; }
-  .view-work-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .view-work-btn svg { width: 11px; height: 11px; fill: currentColor; flex-shrink: 0; }
-  .no-entries { padding: 30px; text-align: center; color: var(--muted); font-size: 0.9rem; background: var(--card); }
+  .entry-campaign{font-weight:700;font-size:.86rem;line-height:1.3}
+  .entry-brand{font-size:.73rem;color:var(--muted);margin-top:2px}
+  .entry-agency-name{font-weight:600;font-size:.82rem}
+  .entry-sub{font-size:.69rem;color:var(--muted);margin-top:2px;line-height:1.4}
+  .entry-day{font-size:.71rem;color:var(--muted);padding-top:12px;font-weight:500}
+  .view-work-btn{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:4px 11px;font-size:.7rem;font-weight:700;color:var(--accent);background:#FEF3ED;border:1.5px solid #F5C5A8;border-radius:20px;text-decoration:none;transition:all .15s;white-space:nowrap}
+  .view-work-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .view-work-btn svg{width:10px;height:10px;fill:currentColor;flex-shrink:0}
+  .no-entries{padding:28px;text-align:center;color:var(--muted);font-size:.88rem;background:var(--card)}
 
-  /* Updates */
-  .updates { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.06); margin-bottom: 24px; }
-  .section-dark-header { padding: 12px 18px; background: var(--header-bg); }
-  .section-dark-header h2 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1.2px; color: #A0A8C0; font-weight: 700; }
-  .update-item { display: flex; gap: 12px; padding: 13px 18px; border-bottom: 1px solid var(--border); }
-  .update-item:last-child { border-bottom: none; }
-  .update-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); margin-top: 5px; flex-shrink: 0; }
-  .update-text { font-size: 0.84rem; line-height: 1.6; }
-  .update-time { font-size: 0.7rem; color: var(--muted); margin-top: 3px; font-weight: 500; }
+  /* ── UPDATES ── */
+  .section-block{background:var(--card);border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06);margin-bottom:22px}
+  .update-item{display:flex;gap:11px;padding:12px 18px;border-bottom:1px solid var(--border)}
+  .update-item:last-child{border-bottom:none}
+  .update-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:5px;flex-shrink:0}
+  .update-text{font-size:.82rem;line-height:1.6}
+  .update-time{font-size:.68rem;color:var(--muted);margin-top:2px;font-weight:500}
 
-  /* Analysis */
-  .analysis-section { background: var(--card); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.06); margin-bottom: 24px; }
-  .analysis-intro { padding: 18px 20px; font-size: 0.88rem; color: var(--muted); line-height: 1.7; border-bottom: 1px solid var(--border); }
-  .analysis-intro strong { color: var(--text); }
-  .analysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0; }
-  .analysis-card { padding: 18px 20px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .analysis-card:last-child { border-right: none; }
-  .analysis-card h4 { font-size: 0.82rem; font-weight: 700; color: var(--text); margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
-  .analysis-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
-  .analysis-stat { display: inline-block; background: #FDF2EC; color: var(--bronze); border: 1px solid #F0C9B0; border-radius: 8px; padding: 2px 8px; font-size: 0.72rem; font-weight: 700; margin-top: 6px; }
-  .read-more-links { padding: 14px 20px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-  .read-more-label { font-size: 0.72rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-  .read-more-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 600; color: var(--shortlist); text-decoration: none; background: #EEF4FF; border: 1.5px solid #C3D8F8; border-radius: 20px; padding: 4px 12px; transition: all .15s; }
-  .read-more-link:hover { background: var(--shortlist); color: #fff; border-color: var(--shortlist); }
-  .read-more-link svg { width: 10px; height: 10px; fill: currentColor; }
+  /* ── ANALYSIS ── */
+  .analysis-intro{padding:16px 20px;font-size:.86rem;color:var(--muted);line-height:1.7;border-bottom:1px solid var(--border)}
+  .analysis-intro strong{color:var(--text)}
+  .analysis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .analysis-card{padding:16px 20px;border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .analysis-card h4{font-size:.8rem;font-weight:700;margin-bottom:7px;display:flex;align-items:center;gap:6px}
+  .analysis-card p{font-size:.78rem;color:var(--muted);line-height:1.7}
+  .analysis-stat{display:inline-block;background:#FDF2EC;color:var(--bronze);border:1px solid #F0C9B0;border-radius:8px;padding:2px 8px;font-size:.7rem;font-weight:700;margin-top:5px}
+  .read-more-links{padding:13px 18px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .rm-label{font-size:.7rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .rm-link{display:inline-flex;align-items:center;gap:4px;font-size:.73rem;font-weight:600;color:var(--shortlist);text-decoration:none;background:#EEF4FF;border:1.5px solid #C3D8F8;border-radius:20px;padding:4px 11px;transition:all .15s}
+  .rm-link:hover{background:var(--shortlist);color:#fff;border-color:var(--shortlist)}
+  .rm-link svg{width:10px;height:10px;fill:currentColor}
 
-  footer { text-align: center; padding: 18px; font-size: 0.7rem; color: var(--muted); border-top: 1px solid var(--border); background: var(--card); }
+  footer{text-align:center;padding:16px;font-size:.68rem;color:var(--muted);border-top:1px solid var(--border);background:var(--card)}
 </style>
 </head>
 <body>
@@ -159,41 +179,93 @@
 <div class="header">
   <div class="flag">🇮🇳</div>
   <h1>Cannes Lions 2026 — <span>India</span> Tracker</h1>
-  <div class="subtitle"><span class="live-dot"></span>Live · Festival Week June 22–26 · 73rd Edition</div>
+  <div class="subtitle">73rd Edition · June 22–26, 2026 · Cannes, France</div>
+  <div><span class="concluded-badge">✓ Festival Concluded · Final Tally</span></div>
 </div>
 
 <div class="stats-bar">
   <div class="stat"><div class="stat-num num-shortlist" id="cnt-sl">—</div><div class="stat-label">Total Entries</div></div>
-  <div class="stat"><div class="stat-num num-bronze" id="cnt-b">—</div><div class="stat-label">Bronze</div></div>
-  <div class="stat"><div class="stat-num num-silver" id="cnt-s">—</div><div class="stat-label">Silver</div></div>
-  <div class="stat"><div class="stat-num num-gold" id="cnt-g">—</div><div class="stat-label">Gold</div></div>
-  <div class="stat"><div class="stat-num num-gp" id="cnt-gp">—</div><div class="stat-label">Grand Prix</div></div>
+  <div class="stat"><div class="stat-num num-bronze" id="cnt-b">3</div><div class="stat-label">Bronze</div></div>
+  <div class="stat"><div class="stat-num num-silver" id="cnt-s">2</div><div class="stat-label">Silver</div></div>
+  <div class="stat"><div class="stat-num num-gold" id="cnt-g">0</div><div class="stat-label">Gold</div></div>
+  <div class="stat"><div class="stat-num num-gp" id="cnt-gp">0</div><div class="stat-label">Grand Prix</div></div>
 </div>
 
 <div class="main">
-  <!-- Sidebar -->
+  <!-- SIDEBAR -->
   <div class="sidebar">
-    <div class="sidebar-section-title">🏆 Agency Leaderboard</div>
+    <div class="sidebar-section-title">🏆 India Agency Leaderboard</div>
     <div id="leaderboard"></div>
-    <div class="pts-legend">Points: <span>Grand Prix 10 · Gold 7 · Silver 5 · Bronze 3 · Shortlist 1</span></div>
+    <div class="pts-legend">Points: <span>GP 10 · Gold 7 · Silver 5 · Bronze 3 · Shortlist 1</span></div>
   </div>
 
-  <!-- Content -->
+  <!-- CONTENT -->
   <div class="content">
 
-    <!-- ── SUMMARY TABLE ── -->
-    <div class="summary-block">
-      <div class="summary-block-header">
-        <span style="font-size:1.1rem">🦁</span>
-        <h2>India at a Glance — Winners & Shortlists</h2>
+    <!-- GLOBAL COUNTRY LEADERBOARD -->
+    <div class="global-board">
+      <div class="dark-header">
+        <span style="font-size:1.1rem">🌍</span>
+        <h2>Global Country Leaderboard — Cannes Lions 2026</h2>
+        <span class="badge-new">NEW</span>
       </div>
+      <div class="global-tabs">
+        <div class="gtab active" data-gtab="world">🌐 World Top 15</div>
+        <div class="gtab" data-gtab="asia">🌏 Asia Rankings</div>
+      </div>
+
+      <!-- World -->
+      <div class="gpanel active" id="gpanel-world">
+        <table class="gl-table">
+          <thead><tr><th class="gl-rank">#</th><th class="gl-flag"></th><th>Country</th><th>Total Lions</th><th>Breakdown</th></tr></thead>
+          <tbody>
+            <tr><td class="gl-rank">1</td><td class="gl-flag">🇺🇸</td><td><strong>United States</strong></td><td class="gl-total num-shortlist">313</td><td><div class="mini-bar"><span class="mini-pill pill-gp">10 GP</span><span class="mini-pill pill-g">~70 G</span><span class="mini-pill pill-s">~90 S</span><span class="mini-pill pill-b">~140 B</span></div></td></tr>
+            <tr><td class="gl-rank">2</td><td class="gl-flag">🇬🇧</td><td><strong>United Kingdom</strong></td><td class="gl-total num-shortlist">90</td><td><div class="mini-bar"><span class="mini-pill pill-gp">5 GP</span><span class="mini-pill pill-g">7 G</span><span class="mini-pill pill-s">15 S</span><span class="mini-pill pill-b">22 B</span></div></td></tr>
+            <tr><td class="gl-rank">3</td><td class="gl-flag">🇧🇷</td><td><strong>Brazil</strong></td><td class="gl-total num-shortlist">~70</td><td><div class="mini-bar"><span class="mini-pill pill-gp">3 GP</span><span class="mini-pill pill-g">~15 G</span><span class="mini-pill pill-s">~20 S</span><span class="mini-pill pill-b">~30 B</span></div></td></tr>
+            <tr><td class="gl-rank">4</td><td class="gl-flag">🇫🇷</td><td><strong>France</strong></td><td class="gl-total num-shortlist">~55</td><td><div class="mini-bar"><span class="mini-pill pill-gp">3 GP</span><span class="mini-pill pill-g">~10 G</span><span class="mini-pill pill-s">~15 S</span><span class="mini-pill pill-b">~25 B</span></div></td></tr>
+            <tr><td class="gl-rank">5</td><td class="gl-flag">🇦🇺</td><td><strong>Australia</strong></td><td class="gl-total num-shortlist">11</td><td><div class="mini-bar"><span class="mini-pill pill-gp">2 GP</span><span class="mini-pill pill-g">2 G</span><span class="mini-pill pill-s">6 S</span><span class="mini-pill pill-b">1 B</span></div></td></tr>
+            <tr><td class="gl-rank">6</td><td class="gl-flag">🇩🇪</td><td><strong>Germany</strong></td><td class="gl-total num-shortlist">~20</td><td><div class="mini-bar"><span class="mini-pill pill-g">~4 G</span><span class="mini-pill pill-s">~8 S</span><span class="mini-pill pill-b">~8 B</span></div></td></tr>
+            <tr><td class="gl-rank">7</td><td class="gl-flag">🇲🇽</td><td><strong>Mexico</strong></td><td class="gl-total num-shortlist">~18</td><td><div class="mini-bar"><span class="mini-pill pill-gp">1 GP</span><span class="mini-pill pill-g">~4 G</span><span class="mini-pill pill-s">~7 S</span><span class="mini-pill pill-b">~6 B</span></div></td></tr>
+            <tr><td class="gl-rank">8</td><td class="gl-flag">🇪🇸</td><td><strong>Spain</strong></td><td class="gl-total num-shortlist">~15</td><td><div class="mini-bar"><span class="mini-pill pill-g">~3 G</span><span class="mini-pill pill-s">~5 S</span><span class="mini-pill pill-b">~7 B</span></div></td></tr>
+            <tr><td class="gl-rank">9</td><td class="gl-flag">🇨🇦</td><td><strong>Canada</strong></td><td class="gl-total num-shortlist">~14</td><td><div class="mini-bar"><span class="mini-pill pill-g">~2 G</span><span class="mini-pill pill-s">~5 S</span><span class="mini-pill pill-b">~7 B</span></div></td></tr>
+            <tr><td class="gl-rank">10</td><td class="gl-flag">🇳🇱</td><td><strong>Netherlands</strong></td><td class="gl-total num-shortlist">~12</td><td><div class="mini-bar"><span class="mini-pill pill-g">2 G</span><span class="mini-pill pill-s">3 S</span><span class="mini-pill pill-b">1 B</span></div></td></tr>
+            <tr><td class="gl-rank">11</td><td class="gl-flag">🇦🇷</td><td><strong>Argentina</strong></td><td class="gl-total num-shortlist">~10</td><td><div class="mini-bar"><span class="mini-pill pill-gp">1 GP</span><span class="mini-pill pill-s">~4 S</span><span class="mini-pill pill-b">~5 B</span></div></td></tr>
+            <tr><td class="gl-rank">12</td><td class="gl-flag">🇿🇦</td><td><strong>South Africa</strong></td><td class="gl-total num-shortlist">~8</td><td><div class="mini-bar"><span class="mini-pill pill-s">~3 S</span><span class="mini-pill pill-b">~5 B</span></div></td></tr>
+            <tr><td class="gl-rank">13</td><td class="gl-flag">🇰🇪</td><td><strong>Kenya</strong> <span style="font-size:.68rem;color:var(--grandprix)">★ 1st GP</span></td><td class="gl-total num-shortlist">~5</td><td><div class="mini-bar"><span class="mini-pill pill-gp">1 GP</span><span class="mini-pill pill-b">~4 B</span></div></td></tr>
+            <tr class="india-row"><td class="gl-rank">🇮🇳</td><td class="gl-flag">🇮🇳</td><td><strong>India</strong></td><td class="gl-total num-bronze">5</td><td><div class="mini-bar"><span class="mini-pill pill-s">2 S</span><span class="mini-pill pill-b">3 B</span></div></td></tr>
+          </tbody>
+        </table>
+        <div class="note-bar">⚠️ World rankings use confirmed + estimated figures from Campaign Brief, LBBOnline, Campaign US and The Stable. India's 2026 tally (5 Lions, 0 Gold) is the weakest in at least 5 years vs. 32 Lions in 2025.</div>
+      </div>
+
+      <!-- Asia -->
+      <div class="gpanel" id="gpanel-asia">
+        <table class="gl-table">
+          <thead><tr><th class="gl-rank">#</th><th class="gl-flag"></th><th>Country</th><th>2026 Lions</th><th>2025 Lions</th><th>Breakdown</th></tr></thead>
+          <tbody>
+            <tr><td class="gl-rank">1</td><td class="gl-flag">🇯🇵</td><td><strong>Japan</strong></td><td class="gl-total num-shortlist">~15</td><td style="font-size:.78rem;color:var(--muted)">13</td><td><div class="mini-bar"><span class="mini-pill pill-g">~4 G</span><span class="mini-pill pill-s">~5 S</span><span class="mini-pill pill-b">~6 B</span></div></td></tr>
+            <tr><td class="gl-rank">2</td><td class="gl-flag">🇨🇳</td><td><strong>China</strong></td><td class="gl-total num-shortlist">~10</td><td style="font-size:.78rem;color:var(--muted)">6</td><td><div class="mini-bar"><span class="mini-pill pill-gp">1 GP</span><span class="mini-pill pill-b">~9 B</span></div></td></tr>
+            <tr><td class="gl-rank">3</td><td class="gl-flag">🇸🇬</td><td><strong>Singapore</strong></td><td class="gl-total num-shortlist">~8</td><td style="font-size:.78rem;color:var(--muted)">12</td><td><div class="mini-bar"><span class="mini-pill pill-gp">1 GP</span><span class="mini-pill pill-s">~4 S</span><span class="mini-pill pill-b">~3 B</span></div></td></tr>
+            <tr class="india-row"><td class="gl-rank">4</td><td class="gl-flag">🇮🇳</td><td><strong>India</strong></td><td class="gl-total num-bronze">5</td><td style="font-size:.78rem;color:var(--muted)">32</td><td><div class="mini-bar"><span class="mini-pill pill-s">2 S</span><span class="mini-pill pill-b">3 B</span></div></td></tr>
+            <tr><td class="gl-rank">5</td><td class="gl-flag">🇹🇭</td><td><strong>Thailand</strong></td><td class="gl-total num-shortlist">~5</td><td style="font-size:.78rem;color:var(--muted)">6</td><td><div class="mini-bar"><span class="mini-pill pill-s">~2 S</span><span class="mini-pill pill-b">~3 B</span></div></td></tr>
+            <tr><td class="gl-rank">6</td><td class="gl-flag">🇰🇷</td><td><strong>South Korea</strong></td><td class="gl-total num-shortlist">~4</td><td style="font-size:.78rem;color:var(--muted)">2</td><td><div class="mini-bar"><span class="mini-pill pill-s">~2 S</span><span class="mini-pill pill-b">~2 B</span></div></td></tr>
+            <tr><td class="gl-rank">7</td><td class="gl-flag">🇵🇭</td><td><strong>Philippines</strong></td><td class="gl-total num-shortlist">~2</td><td style="font-size:.78rem;color:var(--muted)">2</td><td><div class="mini-bar"><span class="mini-pill pill-b">~2 B</span></div></td></tr>
+          </tbody>
+        </table>
+        <div class="note-bar">📊 2025 Asia data from Campaign Brief Asia. 2026 Asia data estimated from available reports. India's drop from 32 → 5 Lions is the steepest decline of any major Asian market.</div>
+      </div>
+    </div>
+
+    <!-- INDIA SUMMARY TABLE -->
+    <div class="summary-block">
+      <div class="dark-header"><span style="font-size:1rem">🦁</span><h2>India at a Glance — Winners & Shortlists</h2></div>
       <div class="summary-tabs">
         <div class="stab winners-tab active" data-tab="winners">🏅 Winners (5 Lions)</div>
         <div class="stab" data-tab="shortlists">◈ All Shortlists</div>
       </div>
       <div class="summary-panel active" id="panel-winners">
         <table class="sum-table">
-          <thead><tr><th>Award</th><th>Campaign</th><th>Brand</th><th>Agency</th><th>Category</th></tr></thead>
+          <thead><tr><th>Award</th><th>Campaign</th><th>Brand · Agency</th><th>Category</th></tr></thead>
           <tbody id="winners-tbody"></tbody>
         </table>
       </div>
@@ -205,9 +277,9 @@
       </div>
     </div>
 
-    <!-- Filters -->
+    <!-- FILTERS -->
     <div class="filter-bar">
-      <span class="filter-label">Filter by:</span>
+      <span class="filter-label">Filter:</span>
       <div class="filter-group">
         <button class="filter-btn f-all active" data-filter="all">All</button>
         <button class="filter-btn f-shortlist" data-filter="Shortlist">Shortlist</button>
@@ -220,69 +292,67 @@
 
     <div id="entries-container"></div>
 
-    <!-- Updates -->
-    <div class="updates" style="margin-top:8px">
-      <div class="section-dark-header"><h2>📡 Latest Updates</h2></div>
-      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">Day 4 — India heads into tonight's awards with 4 shortlists across Brand Experience & Activation, Creative Commerce and Creative Strategy (×2). No new metals yet on Day 3; tally stays at 5 Lions.</div><div class="update-time">Day 4 · June 25, 2026</div></div></div>
-      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India draws a blank on Day 3. Direct and Media shortlists (Blinkstop, The Kolhapuri, Vim Ka Mahakadhai Record, Box to Beds) fail to convert to metals.</div><div class="update-time">Day 3 · June 24, 2026</div></div></div>
-      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">Mothers of Courage (Mantra Social Services & ShikshaLokam) shortlisted in Sustainable Development Goals. Total tally: 24 shortlists.</div><div class="update-time">Day 2 · June 23, 2026</div></div></div>
-      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">TBWA\Lintas & Ducktape Studios win a Bronze Lion in Film Craft (Script) for 'Don't Look Up'. India's sole metal on Day 2. Tally: 2 Silver, 3 Bronze.</div><div class="update-time">Day 2 · June 23, 2026</div></div></div>
-      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India secures 5 more shortlists across Creative Commerce, Creative Strategy and Film — tally reaches 23 across 30 categories.</div><div class="update-time">Day 2 · June 23, 2026</div></div></div>
-      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India wins 2 Silver + 2 Bronze on Day 1 across Audio & Radio, Health & Wellness and Pharma.</div><div class="update-time">Day 1 · June 22, 2026</div></div></div>
-      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India sent 676 entries in 2026 — down 31.2% from 982 in 2025.</div><div class="update-time">Pre-Festival</div></div></div>
+    <!-- UPDATES -->
+    <div class="section-block">
+      <div class="dark-header"><h2>📡 Festival Wrap-Up</h2></div>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India ends Cannes Lions 2026 with a final tally of <strong>5 Lions (2 Silver, 3 Bronze) — zero Gold, zero Grand Prix</strong>. Its weakest performance in at least 5 years, down sharply from 32 Lions in 2025.</div><div class="update-time">Final · June 26, 2026</div></div></div>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">Day 4 & 5 drew a complete blank for India — shortlists in Brand Experience, Creative Commerce and Creative Strategy (Eye Test Menu ×2) failed to convert.</div><div class="update-time">Day 4–5 · June 25–26, 2026</div></div></div>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">Day 3 blank — Direct and Media shortlists (Blinkstop, The Kolhapuri, Vim Ka Mahakadhai Record, Box to Beds) all went home empty-handed.</div><div class="update-time">Day 3 · June 24, 2026</div></div></div>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">TBWA\Lintas & Ducktape Studios win Bronze in Film Craft (Script) for 'Don't Look Up'. 5 more shortlists added (Creative Commerce, Strategy, Film). Mothers of Courage shortlisted in SDG.</div><div class="update-time">Day 2 · June 23, 2026</div></div></div>
+      <div class="update-item"><div class="update-dot"></div><div><div class="update-text">India wins 2 Silver (Sting F1, Indianis Dentris) + 2 Bronze (Renu vs The City, Sawaal Uthao) on Day 1.</div><div class="update-time">Day 1 · June 22, 2026</div></div></div>
     </div>
 
-    <!-- Analysis -->
-    <div class="analysis-section">
-      <div class="section-dark-header"><h2>📊 Why India Underperformed at Cannes 2026</h2></div>
+    <!-- ANALYSIS -->
+    <div class="section-block">
+      <div class="dark-header"><h2>📊 Why India Underperformed at Cannes 2026</h2></div>
       <div class="analysis-intro">
-        After two days of awards, India has won just <strong>5 Lions with zero Gold</strong> — its worst start in at least five years. By comparison, India had 12 metals including 2 Golds at the same stage in 2025, and 9 metals with 1 Gold in 2024. Here's what the industry says went wrong.
-        <br><span class="analysis-stat">2026: 5 Lions, 0 Gold · 2025 same point: 12 Lions, 2 Gold · 2024 same point: 9 Lions, 1 Gold</span>
+        India won just <strong>5 Lions with zero Gold</strong> — its worst finish in at least five years. By comparison, India had <strong>32 Lions including 1 Grand Prix in 2025</strong>. Here's what went wrong.
+        <br><span class="analysis-stat">2026: 5 · 2025: 32 · 2024: ~18 · 2023: ~15 · 2022: ~22</span>
       </div>
       <div class="analysis-grid">
-        <div class="analysis-card">
-          <h4>📉 Sharp Drop in Entries</h4>
-          <p>India sent only <strong>676 entries</strong> this year, down 31.2% from 982 in 2025 — outpacing the global decline of 25.5%. Fewer entries means fewer chances to shortlist, let alone win. India's share of global submissions slipped from ~3.7% to ~3.4%.</p>
-        </div>
-        <div class="analysis-card">
-          <h4>💸 Awards ROI Scrutiny</h4>
-          <p>Industry observers attribute the entry decline to agencies and marketers taking a harder look at awards-related spending — entry fees, travel budgets, delegation sizes and overall ROI from international festivals. The mood has shifted to quality over volume.</p>
-        </div>
-        <div class="analysis-card">
-          <h4>🎯 Narrow Category Focus</h4>
-          <p>India had <strong>zero shortlists</strong> in Digital Craft, PR, Industry Craft, Entertainment (all four Lions), Social & Creator, Creative B2B, Creative Business Transformation, Luxury, Creative Effectiveness and Creative Data — categories where India historically punched above its weight.</p>
-        </div>
-        <div class="analysis-card">
-          <h4>🔄 Low Conversion Rate</h4>
-          <p>India converted only 5 of its 24 shortlists into metals — a <strong>~21% conversion rate</strong>. Several shortlisted campaigns in Direct, Media, Design and Film Craft failed to make it onto the winners' podium, despite being considered strong contenders going in.</p>
-        </div>
-        <div class="analysis-card">
-          <h4>🤔 Underconfidence on Global Stage</h4>
-          <p>OMD India's Anisha Iyer noted "<strong>a slight undertone of underconfidence in India</strong>" — suggesting Indian agencies may not be fully backing their best ideas for the most competitive global categories, or are not entering the right work in the right categories.</p>
-        </div>
-        <div class="analysis-card">
-          <h4>📌 No Gold in Sight (Yet)</h4>
-          <p>With Day 4 awards still to come in Brand Experience & Activation, Creative Commerce and Creative Strategy, India has a chance to salvage higher-value metals. But the structural gaps — no Grand Prix contenders, no Gold shortlists yet — reflect a deeper shift in India's Cannes strategy.</p>
-        </div>
+        <div class="analysis-card"><h4>📉 Entry Collapse</h4><p>India sent only <strong>676 entries</strong> — down 31.2% from 982 in 2025, outpacing the global 25% decline. Fewer entries = fewer shortlists = fewer chances to win.</p></div>
+        <div class="analysis-card"><h4>💸 ROI Scrutiny</h4><p>Agencies and marketers took a harder look at entry fees, travel costs and delegation budgets. The mood shifted to quality over volume — but the quality didn't match either.</p></div>
+        <div class="analysis-card"><h4>🎯 Category Blind Spots</h4><p>India had <strong>zero shortlists</strong> in Digital Craft, PR, Industry Craft, Entertainment (all four), Social & Creator, Creative B2B, Business Transformation, Luxury and Creative Effectiveness.</p></div>
+        <div class="analysis-card"><h4>🔄 Poor Conversion</h4><p>India converted only 5 of 24 shortlists to metals — a <strong>~21% hit rate</strong>. Campaigns in Direct, Media, Design, Creative Strategy and Film Craft all failed to crack the winners' circle.</p></div>
+        <div class="analysis-card"><h4>🤔 Underconfidence</h4><p>OMD India's Anisha Iyer called out "<strong>a slight undertone of underconfidence</strong>" — suggesting India may not be entering the right work in the right categories on the global stage.</p></div>
+        <div class="analysis-card"><h4>🌏 Asia Context</h4><p>Japan (~15 Lions), China (~10) and Singapore (~8) all outperformed India in 2026. India's drop from 32 → 5 Lions is the steepest decline of any major Asian market year-on-year.</p></div>
       </div>
       <div class="read-more-links">
-        <span class="read-more-label">Read More</span>
-        <a href="https://www.exchange4media.com/cannes-lions-news/cannes-lions-2026-day-3-india-stays-on-5-lions-after-direct-and-media-draw-a-blank-155745.html" target="_blank" rel="noopener" class="read-more-link"><svg viewBox="0 0 12 12"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg> Exchange4Media — Day 3 Recap</a>
-        <a href="https://www.afaqs.com/news/advertising/indias-poor-run-at-cannes-lions-2026-continues-12066314" target="_blank" rel="noopener" class="read-more-link"><svg viewBox="0 0 12 12"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg> Afaqs — India's Poor Run Continues</a>
-        <a href="https://www.impactonnet.com/impact-stories/cannes-lions-2026-day-4-four-shortlists-keep-india-in-contention-15078.html" target="_blank" rel="noopener" class="read-more-link"><svg viewBox="0 0 12 12"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg> ImpactOnNet — Day 4 Preview</a>
-        <a href="https://www.instagram.com/p/DZ_tw23JjvC/" target="_blank" rel="noopener" class="read-more-link"><svg viewBox="0 0 12 12"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg> Instagram Discussion</a>
+        <span class="rm-label">Read More</span>
+        <a href="https://www.exchange4media.com/cannes-lions-news/cannes-lions-2026-day-3-india-stays-on-5-lions-after-direct-and-media-draw-a-blank-155745.html" target="_blank" rel="noopener" class="rm-link"><svg viewBox="0 0 12 12"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg> E4M — Day 3</a>
+        <a href="https://www.afaqs.com/news/advertising/indias-poor-run-at-cannes-lions-2026-continues-12066314" target="_blank" rel="noopener" class="rm-link"><svg viewBox="0 0 12 12"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg> Afaqs</a>
+        <a href="https://www.impactonnet.com/impact-stories/cannes-lions-2026-day-4-four-shortlists-keep-india-in-contention-15078.html" target="_blank" rel="noopener" class="rm-link"><svg viewBox="0 0 12 12"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg> ImpactOnNet — Day 4</a>
+        <a href="https://www.instagram.com/p/DZ_tw23JjvC/" target="_blank" rel="noopener" class="rm-link"><svg viewBox="0 0 12 12"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg> Instagram</a>
       </div>
     </div>
 
   </div>
 </div>
 
-<footer>🦁 Tracking Indian creativity at Cannes Lions 2026 · Data: Exchange4Media, BestMediaInfo, Storyboard18, Afaqs, Campaign India, ImpactOnNet</footer>
+<footer>🦁 Cannes Lions 2026 · India Final Tracker · Data: Cannes Lions Official, Exchange4Media, Afaqs, Campaign Brief Asia, LBBOnline, ImpactOnNet, Campaign US</footer>
 
 <script>
-const EXT = `<svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg>`;
+const EXT=`<svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M10 7.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .5-.5h2V1H2.5A1.5 1.5 0 0 0 1 2.5v7A1.5 1.5 0 0 0 2.5 11h7A1.5 1.5 0 0 0 11 9.5V7.5h-1zm1-6.5H7v1h2.29L4.15 7.15l.7.7L10 2.71V5h1V1z"/></svg>`;
 
-const entries = [
+// Jury presidents per category
+const juryPresidents = {
+  "Audio & Radio":"Oriel Davis-Lyons, CCO — Mother New York",
+  "Creative Brand":"Marcel Marcondes, Global CMO — AB InBev",
+  "Health & Wellness":"Kainaz Karmakar, CCO — Ogilvy India",
+  "Pharma":"Tracey Brader, Chief Strategy & Innovation Officer — Omnicom Health",
+  "Print & Publishing":"Jessica Apellaniz, CCO — Wieden+Kennedy Mexico",
+  "Film Craft":"Pip Smart, Executive Producer — Revolver, Australia",
+  "Design":"Greg Quinton, CCO — Design Bridge and Partners",
+  "Direct":"Joaquín Cubría, CCO — GUT Argentina",
+  "Media":"Sindhuja Rai, Chief Client Officer — WPP Media APMEA",
+  "Brand Experience & Activation":"Rafael Pitanguy, Deputy Global CCO — VML",
+  "Creative Commerce":"Phil Camarota, CCO — Flywheel",
+  "Creative Strategy":"Sarah Lemarié, Chief Strategy Officer — Publicis France",
+  "Film":"Pelle Sjoenell, Worldwide CCO — NLS Corp.",
+  "Sustainable Development Goals":"Kazoo Sato, CCO & CEO — Earth Centric Design, Japan",
+};
+
+const entries=[
   {cat:"Audio & Radio",campaign:"The Unofficial Official Sound of F1",brand:"Sting (PepsiCo)",agency:"Leo India",sub:"Challenger Brand",status:"Silver",day:"Day 1",links:[{url:"https://www.youtube.com/watch?v=vQQK3t8MUwk"}]},
   {cat:"Creative Brand",campaign:"From a Sanitary Pad to a Basic Right",brand:"Whisper (P&G)",agency:"Leo India / P&G",sub:"Brand Positioning",status:"Shortlist",day:"Pre-Festival",links:[]},
   {cat:"Health & Wellness",campaign:"Indianis Dentris",brand:"Colgate",agency:"The Refinery Mumbai / Brand David",sub:"Industry Craft: Photography",status:"Silver",day:"Day 1",links:[{url:"https://www.adsoftheworld.com/campaigns/indianis-dentris-india-s-newest-flower-species-8d1490a7-0043-416f-87ae-8c169f071a8f"}]},
@@ -309,17 +379,17 @@ const entries = [
   {cat:"Sustainable Development Goals",campaign:"Mothers of Courage",brand:"Mantra Social Services & ShikshaLokam",agency:"Shiksha Chaupal",sub:"Community-led / Girls' Education",status:"Shortlist",day:"June 23",links:[{url:"https://www.youtube.com/watch?v=Amv0O1w17Ag"}]},
 ];
 
-const catIcons = {"Audio & Radio":"🎵","Creative Brand":"⭐","Health & Wellness":"💚","Pharma":"💊","Print & Publishing":"📰","Film Craft":"🎬","Design":"🎨","Direct":"🎯","Media":"📡","Brand Experience & Activation":"✨","Creative Commerce":"🛒","Creative Strategy":"🧭","Film":"🎥","Sustainable Development Goals":"🌍"};
-const statusOrder = {"Grand Prix":0,"Gold":1,"Silver":2,"Bronze":3,"Shortlist":4};
-const agencyPoints = {"Grand Prix":10,"Gold":7,"Silver":5,"Bronze":3,"Shortlist":1};
-const badgeClsMap = {Silver:"sb-silver",Bronze:"sb-bronze",Gold:"sb-gold","Grand Prix":"sb-gp",Shortlist:"sb-sl"};
-const iconMap = {Shortlist:"◈",Bronze:"🥉",Silver:"🥈",Gold:"🥇","Grand Prix":"🏆"};
+const catIcons={"Audio & Radio":"🎵","Creative Brand":"⭐","Health & Wellness":"💚","Pharma":"💊","Print & Publishing":"📰","Film Craft":"🎬","Design":"🎨","Direct":"🎯","Media":"📡","Brand Experience & Activation":"✨","Creative Commerce":"🛒","Creative Strategy":"🧭","Film":"🎥","Sustainable Development Goals":"🌍"};
+const statusOrder={"Grand Prix":0,"Gold":1,"Silver":2,"Bronze":3,"Shortlist":4};
+const agencyPoints={"Grand Prix":10,"Gold":7,"Silver":5,"Bronze":3,"Shortlist":1};
+const iconMap={Shortlist:"◈",Bronze:"🥉",Silver:"🥈",Gold:"🥇","Grand Prix":"🏆"};
+const badgeClsMap={Silver:"sb-silver",Bronze:"sb-bronze",Gold:"sb-gold","Grand Prix":"sb-gp",Shortlist:"sb-sl"};
 
-function agencyKey(a){ return a.split('/')[0].trim().split('\\')[0].trim().split(',')[0].trim(); }
+function agencyKey(a){return a.split('/')[0].trim().split('\\')[0].trim().split(',')[0].trim();}
 
-function buildLeaderboard(data) {
+function buildLeaderboard(){
   const map={};
-  data.forEach(e=>{
+  entries.forEach(e=>{
     const a=agencyKey(e.agency);
     if(!map[a]) map[a]={pts:0,medals:[]};
     map[a].pts+=agencyPoints[e.status]||0;
@@ -327,11 +397,10 @@ function buildLeaderboard(data) {
   });
   return Object.entries(map).sort((a,b)=>b[1].pts-a[1].pts);
 }
-
-function dotCls(s){ return s==='Silver'?'dot-s':s==='Bronze'?'dot-b':'dot-sl'; }
+function dotCls(s){return s==='Silver'?'dot-s':s==='Bronze'?'dot-b':'dot-sl';}
 
 function renderLeaderboard(){
-  const board=buildLeaderboard(entries);
+  const board=buildLeaderboard();
   document.getElementById('leaderboard').innerHTML=board.slice(0,12).map(([name,d],i)=>`
     <div class="agency-row">
       <div class="rank">${i+1}</div>
@@ -347,8 +416,8 @@ function renderSummaryTables(){
     <tr>
       <td><span class="sum-badge ${badgeClsMap[e.status]}">${iconMap[e.status]} ${e.status}</span></td>
       <td><strong>${e.campaign}</strong><div class="sum-cat">${e.brand}</div></td>
-      <td class="sum-agency">${agencyKey(e.agency)}</td>
-      <td><div>${e.cat}</div><div class="sum-cat">${e.sub}</div></td>
+      <td><span class="sum-agency">${agencyKey(e.agency)}</span></td>
+      <td><div>${e.cat}</div><div class="sum-cat">${e.sub}</div>${juryPresidents[e.cat]?`<div class="jp-chip">JP: ${juryPresidents[e.cat]}</div>`:''}</td>
     </tr>`).join('');
 
   const sls=entries.filter(e=>e.status==='Shortlist');
@@ -356,12 +425,22 @@ function renderSummaryTables(){
     <tr>
       <td><span class="sum-badge sb-sl">◈ SL</span></td>
       <td><strong>${e.campaign}</strong><div class="sum-cat">${e.brand}</div></td>
-      <td class="sum-agency">${agencyKey(e.agency)}</td>
-      <td><div>${e.cat}</div><div class="sum-cat">${e.sub}</div></td>
+      <td><span class="sum-agency">${agencyKey(e.agency)}</span></td>
+      <td><div>${e.cat}</div><div class="sum-cat">${e.sub}</div>${juryPresidents[e.cat]?`<div class="jp-chip">JP: ${juryPresidents[e.cat]}</div>`:''}</td>
     </tr>`).join('');
 }
 
-// Tab switching
+// Global tabs
+document.querySelectorAll('.gtab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.gtab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.gpanel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('gpanel-'+t.dataset.gtab).classList.add('active');
+  });
+});
+
+// Summary tabs
 document.querySelectorAll('.stab').forEach(t=>{
   t.addEventListener('click',()=>{
     document.querySelectorAll('.stab').forEach(x=>x.classList.remove('active'));
@@ -371,19 +450,11 @@ document.querySelectorAll('.stab').forEach(t=>{
   });
 });
 
-function badgeHtml(s){ return `<span class="badge badge-${s.toLowerCase().replace(' ','')}">${iconMap[s]||''} ${s}</span>`; }
-
-function viewWorkHtml(links){
-  if(!links||!links.length) return '';
-  return links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener" class="view-work-btn">${EXT} View Work</a>`).join(' ');
-}
+function badgeHtml(s){return`<span class="badge badge-${s.toLowerCase().replace(' ','')}">${iconMap[s]||''} ${s}</span>`;}
+function viewWorkHtml(links){if(!links||!links.length)return'';return links.map(l=>`<a href="${l.url}" target="_blank" rel="noopener" class="view-work-btn">${EXT} View Work</a>`).join(' ');}
 
 function updateCounters(){
   document.getElementById('cnt-sl').textContent=entries.length;
-  document.getElementById('cnt-b').textContent=entries.filter(e=>e.status==='Bronze').length;
-  document.getElementById('cnt-s').textContent=entries.filter(e=>e.status==='Silver').length;
-  document.getElementById('cnt-g').textContent=entries.filter(e=>e.status==='Gold').length;
-  document.getElementById('cnt-gp').textContent=entries.filter(e=>e.status==='Grand Prix').length;
 }
 
 function renderEntries(filter){
@@ -393,12 +464,14 @@ function renderEntries(filter){
   cats.forEach(cat=>{
     const catEntries=entries.filter(e=>e.cat===cat).filter(e=>filter==='all'||e.status===filter).sort((a,b)=>statusOrder[a.status]-statusOrder[b.status]);
     if(!catEntries.length) return;
+    const jp=juryPresidents[cat];
     const sec=document.createElement('div');
     sec.className='cat-section';
     sec.innerHTML=`
       <div class="cat-header">
         <span class="cat-icon">${catIcons[cat]||'🦁'}</span>
         <span class="cat-title">${cat}</span>
+        ${jp?`<span class="cat-jp">JP: ${jp.split('—')[0].trim()}</span>`:''}
         <span class="cat-count">${catEntries.length} entr${catEntries.length===1?'y':'ies'}</span>
       </div>
       <div class="entries-table">
